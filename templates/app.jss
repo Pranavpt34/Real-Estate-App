@@ -58,4 +58,5 @@ function getBathValue() {
     });
   }
   
+  
   window.onload = onPageLoad;
