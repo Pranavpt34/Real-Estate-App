@@ -27,8 +27,7 @@ function getBathValue() {
     var location = document.getElementById("uiLocations");
     var estPrice = document.getElementById("uiEstimatedPrice");
   
-    {% comment %} var url = "http://127.0.0.1:5000/predict_home_price"; {% endcomment %}
-    var url= "https://homepriceprediction.onrender.com/";
+    var url= "https://homepriceprediction.onrender.com/predict_home_price";
   
     $.post(url, {
         total_sqft: parseFloat(sqft.value),
@@ -44,7 +43,6 @@ function getBathValue() {
   
   function onPageLoad() {
     console.log( "document loaded" );
-    {% comment %} var url = "http://127.0.0.1:5000/get_location_names"; {% endcomment %}
     var url= "https://homepriceprediction.onrender.com/get_location_names";
     $.get(url,function(data, status) {
         console.log("got response for get_location_names request");
