@@ -11,11 +11,12 @@ def home():
 
 @app.route('/get_location_names', methods=['GET'])
 def get_location_names():
+    print("first")
     response = jsonify({
         'locations': util.get_location_names()
     })
     response.headers.add('Access-Control-Allow-Origin', '*')
-
+    print(response)
     return response
 
 
