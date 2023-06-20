@@ -11,13 +11,11 @@ def home():
 
 @app.route('/get_location_names', methods=['GET'])
 def get_location_names():
-    print("first")
     response = jsonify({
         'locations': util.get_location_names()
     })
     response.headers.add('Access-Control-Allow-Origin', '*')
-    print(response)
-    return response
+    return res.json({response:response})
 
 
 @app.route('/predict_home_price', methods=['GET', 'POST'])
