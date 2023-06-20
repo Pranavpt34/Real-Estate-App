@@ -46,6 +46,7 @@ function getBathValue() {
     var url= "https://homepriceprediction.onrender.com/get_location_names";
     $.get(url,function(data, status) {
         console.log("got response for get_location_names request");
+        console.log(data,status)
         if(data) {
             var locations = data.locations;
             var uiLocations = document.getElementById("uiLocations");
