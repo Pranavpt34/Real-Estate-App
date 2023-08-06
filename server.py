@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify, render_template,send_from_directory
 import util
 
-app = Flask(__name__,static_folder='templates')
+app = Flask(__name__,static_folder='static')
 
 
 @app.route('/')
@@ -14,8 +14,8 @@ def get_location_names():
     response = jsonify({
         'locations': util.get_location_names()
     })
-    response.headers.add('Access-Control-Allow-Origin', '*')
-    return res.json({response:response})
+    # response.headers.add('Access-Control-Allow-Origin', '*')
+    return response
 
 
 @app.route('/predict_home_price', methods=['GET', 'POST'])
@@ -25,6 +25,7 @@ def predict_home_price():
     bhk = int(request.form['bhk'])
     bath = int(request.form['bath'])
 
+    print(total_sqft,location)
     response = jsonify({
         'estimated_price': util.get_estimated_price(location, total_sqft, bhk, bath)
     })
@@ -35,4 +36,4 @@ def predict_home_price():
 
 if __name__ == "__main__":
     util.load_saved_artefacts()
-    app.run()
+    app.run(debug=True)
